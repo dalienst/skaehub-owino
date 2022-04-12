@@ -1,4 +1,4 @@
-#cCHECKING LEAP YEAR
+#CHECKING LEAP YEAR
 year = int(input('Enter year: '))
 
 if year % 100 == 0:
