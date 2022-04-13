@@ -1,9 +1,11 @@
-#Check if is a power of four
 def is_power_of_four(num):
-    while num and not (num & 0b11):
-        num >>= 2
-    return (num == 1)
+    if(num == 0):
+        return False
+    while (num != 1):
+        if (num % 4 != 0):
+            return False
+        num = num // 4
+    return True
 
-#Examples
-print(is_power_of_four(256)) #output is True
-print(is_power_of_four(63))  #output is false
+print(is_power_of_four(64))
+print(is_power_of_four(50))

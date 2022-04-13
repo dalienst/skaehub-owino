@@ -1,12 +1,15 @@
 import requests
-def web_request():
-    res = requests.get("https://skaehub.com")
-    print({"text": res.text})
-    print("\n")
-    print({"content": res.content})
-    print("\n\n")
-    r = requests.get('https://api.github.com/events', stream=True)
-    print(r.raw)
-    print(r.raw.read(15))
+url = 'https://api.github.com/events'
+def web_request(url):
+    try:
+        res = requests.get(url)
+        res_status =  res.status_code
+        res_content = res.content
+        res_text = res.text
+        r = requests.get(url, stream=True)
+        r_raw = r.raw
+        return res_content, res_text,r_raw, res_status
+    except requests.exceptions.RequestException as err:
+            return err
 
-print(web_request())
+print(web_request(url))
