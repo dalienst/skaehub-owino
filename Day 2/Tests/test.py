@@ -28,6 +28,9 @@ class TestCases(unittest.TestCase):
     def test_basic_stat(self):
         self.assertEqual(AssignmentTwo.basic_stat([59, 69, 45, 83, 55, 10]), {'mean': 53.5, 'mode': 59, 'variance': 621.5, 'median': 57.0})
 
+    #Question 7
+    def test_get_dict_data():
+        pass
 
 
 if __name__ == '__main__':

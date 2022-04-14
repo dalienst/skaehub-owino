@@ -6,12 +6,16 @@ def guess_number():
 
     x = random.randint(lower, upper)
     print("\n\t You have only ", round(math.log(upper - lower + 1, 2)), "chances to guess!\n")
+    
 
     #initializing the guess
     count = 0
     while count < math.log(upper - lower + 1, 2):
         count += 1
         guess = int(input("Guess a number: ")) #taking guess
+        if guess < lower or guess > upper:
+            print("Okrrrrr")
+            break
         
         if x == guess:
             print("Congratulations!!! You guessed it right in ", count, "try")
