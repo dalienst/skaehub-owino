@@ -1,12 +1,9 @@
 import requests
 from requests.exceptions import Timeout
 
-url = "https://skaehub.com/"
-def timeout_request(url):
-    try:
-        data = requests.get(url, timeout=1.0)
-        return data.status_code
-    except Timeout as err:
-            return err
-
-print(timeout_request(url))
+def timeout_request(url, timeout=1):
+        try:
+            response = requests.get(url, timeout=timeout)
+            return response
+        except Timeout as err:
+                raise(err)
