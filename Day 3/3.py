@@ -1,6 +1,6 @@
 import numpy as np
 def size_of_array():
-    num = int(input("Number of elements in the array: "))
+    #num = int(input("Number of elements in the array: "))
     arr = np.array(list(map(int, input("Elements of the array: ").strip().split())))
     # return arr, arr.size, arr.size*arr.itemsize
     return f"The array is: {arr} \nArray size is: {arr.size} \nMemory occupied by array: {arr.size*arr.itemsize}"
