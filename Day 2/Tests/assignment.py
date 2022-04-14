@@ -1,6 +1,7 @@
 from math import sqrt
 import math
 import random
+from urllib import response
 import requests
 from requests.exceptions import Timeout
 import statistics
@@ -55,24 +56,20 @@ class AssignmentTwo():
     def web_request(url):
         try:
             res = requests.get(url)
-            res_status =  res.status_code
-            res_content = res.content
-            res_text = res.text
-            r = requests.get(url, stream=True)
-            r_raw = r.raw
-            return res_content, res_text,r_raw, res_status
+            return res
         except requests.exceptions.RequestException as err:
                 return err
 
 
     #Question 5
-    url = "https://skaehub.com/"
-    def timeout_request(url):
+  
+    def timeout_request(url, timeout=1):
         try:
-            data = requests.get(url, timeout=1.0)
-            return data.status_code
+            response = requests.get(url, timeout=timeout)
+            return response
         except Timeout as err:
-                return err
+                raise(err)
+
 
     #Question 6
     def basic_stat(num):
@@ -91,10 +88,7 @@ class AssignmentTwo():
         return dict_stats
 
     #Question 7
-    def get_dict_data():
-        url = "https://data.townofcary.org/api/v2/catalog/datasets/rdu-weather-history"
-
-        response = requests.get(url).text
-
-        dict_data = json.loads(response)
-        return dict_data
+    def get_dict_data(url):
+        response = requests.get(url)
+        data = response.json()
+        return data
